@@ -2,12 +2,15 @@ cmake_minimum_required(VERSION 4.2)
 project(dsp_template)
 set(CMAKE_CXX_STANDARD 14)
 
+# 编译选项
 set(OPTIMIZATION_FLAGS "-O3 -ffast-math -mcpu=native")
 set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} ${OPTIMIZATION_FLAGS}")
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${OPTIMIZATION_FLAGS}")
 
+# 使用NEON
 add_compile_definitions(ARM_MATH_NEON)
 
+# 针对AARCH64位架构，如果是32位处理器请注释掉此行
 add_compile_definitions(ARM_MATH_AARCH64)
 
 include(FetchContent)
